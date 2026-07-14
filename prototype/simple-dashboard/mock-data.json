@@ -1,0 +1,22 @@
+{
+  "metrics": [
+    { "label": "Vault Health Score", "value": "86", "suffix": "/100", "detail": "+4 this week", "tone": "cyan", "icon": "pulse" },
+    { "label": "Inbox Backlog", "value": "17", "suffix": "notes", "detail": "9d oldest, 4 need routing", "tone": "amber", "icon": "inbox" },
+    { "label": "Task Flow", "value": "67", "suffix": "%", "detail": "12 today, 3 overdue", "tone": "violet", "icon": "flow" }
+  ],
+  "actions": ["New Diary", "Deep Research", "Pull RSS Feeds", "GitHub Feeds", "Inbox Ingest", "Vault Lint"],
+  "tasks": [
+    { "title": "Review research brief: Local-first AI", "state": "doing", "meta": "Deep work · 10:30" },
+    { "title": "Route three capture notes from Inbox", "state": "todo", "meta": "Vault hygiene · 15 min" },
+    { "title": "Publish weekly learning note", "state": "todo", "meta": "Writing · 16:00" },
+    { "title": "Link meeting notes to project pages", "state": "done", "meta": "Knowledge graph" },
+    { "title": "Triage agent output: web clipper", "state": "overdue", "meta": "Needs decision · yesterday" }
+  ],
+  "github": [
+    { "repo": "obsidianmd/obsidian-api", "description": "Updated type definitions for properties API.", "meta": "2h ago · 4.1k ★" },
+    { "repo": "langchain-ai/langchainjs", "description": "New streaming callbacks landed in main.", "meta": "5h ago · 15.6k ★" },
+    { "repo": "microsoft/markitdown", "description": "Issue: Frontmatter preservation proposal.", "meta": "Yesterday · 66.2k ★" },
+    { "repo": "anthropics/skills", "description": "Added a new skill authoring example.", "meta": "Yesterday · 7.8k ★" },
+    { "repo": "huggingface/transformers", "description": "Release v4.53 notes are available.", "meta": "2d ago · 149k ★" }
+  ]
+}

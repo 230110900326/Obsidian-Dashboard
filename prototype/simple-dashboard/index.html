@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Agentic Vault Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="dashboard-shell">
+    <header class="header" aria-labelledby="dashboard-title">
+      <div class="header__title-group">
+        <p class="eyebrow"><span class="eyebrow__node"></span> AGENTIC VAULT</p>
+        <h1 id="dashboard-title">MY OBSIDIAN DASHBOARD</h1>
+      </div>
+      <div class="header__status" aria-label="Dashboard status">
+        <span class="live-badge"><span class="live-badge__dot"></span> LIVE</span>
+        <span class="sync-time">Last sync <time datetime="09:42">09:42</time></span>
+        <button class="refresh-button" type="button" id="refresh-button">Refresh</button>
+      </div>
+    </header>
+
+    <section class="action-strip" aria-label="Vault actions" id="action-strip"></section>
+
+    <section class="metrics-grid" aria-label="Vault overview" id="metrics-grid"></section>
+
+    <section class="panel activity-panel" aria-labelledby="activity-title">
+      <div class="panel__header activity-panel__header">
+        <div>
+          <p class="panel__index">VAULT SIGNAL / 01</p>
+          <h2 id="activity-title">Vault Note Creation</h2>
+        </div>
+        <p class="activity-summary" id="activity-summary">180 active note days, Jul 2025–Jun 2026</p>
+      </div>
+      <div class="heatmap-scroll" aria-label="Daily note creation activity">
+        <div class="heatmap" id="heatmap"></div>
+      </div>
+      <div class="activity-panel__footer">
+        <span class="activity-caption">Each cell is a day · note creation signal</span>
+        <div class="legend" aria-label="Note creation intensity">
+          <span>Less</span>
+          <span class="legend__cell level-0"></span><span class="legend__cell level-1"></span><span class="legend__cell level-2"></span><span class="legend__cell level-3"></span><span class="legend__cell level-4"></span>
+          <span>More</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="feed-grid" aria-label="Today and GitHub updates">
+      <article class="panel list-panel" aria-labelledby="tasks-title">
+        <div class="panel__header">
+          <div>
+            <p class="panel__index">EXECUTION QUEUE / 02</p>
+            <h2 id="tasks-title">Today Tasks</h2>
+          </div>
+          <span class="panel__count" id="task-count"></span>
+        </div>
+        <ol class="task-list" id="task-list"></ol>
+      </article>
+
+      <article class="panel list-panel" aria-labelledby="github-title">
+        <div class="panel__header">
+          <div>
+            <p class="panel__index">EXTERNAL PULSE / 03</p>
+            <h2 id="github-title">GitHub Feed</h2>
+          </div>
+          <span class="github-mark" aria-hidden="true">GH</span>
+        </div>
+        <ul class="github-list" id="github-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

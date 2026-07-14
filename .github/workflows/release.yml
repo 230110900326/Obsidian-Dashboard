@@ -1,0 +1,58 @@
+name: Release Obsidian plugin
+
+on:
+    push:
+        tags:
+            - '*'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            id-token: write
+            attestations: write
+        steps:
+            - uses: actions/checkout@v6
+
+            - name: Use Node.js
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+                  cache: 'npm'
+
+            - name: Build plugin
+              run: |
+                  npm ci
+                  npm run build
+
+            - name: Verify release version
+              env:
+                  RELEASE_TAG: ${{ github.ref_name }}
+              run: |
+                  node -e "const fs=require('fs'); const manifest=JSON.parse(fs.readFileSync('manifest.json','utf8')); const pkg=JSON.parse(fs.readFileSync('package.json','utf8')); const versions=JSON.parse(fs.readFileSync('versions.json','utf8')); const tag=process.env.RELEASE_TAG.replace(/^v/, ''); if (manifest.version !== tag || pkg.version !== tag || versions[tag] !== manifest.minAppVersion) { throw new Error('Tag, package.json, manifest.json, and versions.json must match.'); }"
+
+            - name: Package plugin
+              env:
+                  RELEASE_TAG: ${{ github.ref_name }}
+              run: zip -j "agent-dashboard-${RELEASE_TAG}.zip" main.js manifest.json styles.css
+
+            - name: Attest build provenance
+              uses: actions/attest@v4
+              with:
+                  subject-path: |
+                      main.js
+                      manifest.json
+                      styles.css
+                      agent-dashboard-${{ github.ref_name }}.zip
+
+            - name: Create release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  tag="${GITHUB_REF#refs/tags/}"
+
+                  gh release create "$tag" \
+                    --title="$tag" \
+                    --generate-notes \
+                    main.js manifest.json styles.css "agent-dashboard-${tag}.zip"
