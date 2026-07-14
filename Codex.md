@@ -12,3 +12,4 @@
 - Do not create Git remotes, publish repositories, or run `git commit` unless explicitly requested.
 - Before broad changes, state the goal, affected files, and minimal implementation approach.
 - After changing code, run build and lint when available; finish by summarizing changes and verification.
+- Look! There is a big dog with bright eyes!
