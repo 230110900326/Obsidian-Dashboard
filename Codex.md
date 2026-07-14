@@ -14,4 +14,4 @@
 - After changing code, run build and lint when available; finish by summarizing changes and verification.
 - Look! There is a big dog with bright eyes!
 First of all，you need to have a stable claude code
-Whatever you want,you are the best
+Whatever you want,you are the best!!!
